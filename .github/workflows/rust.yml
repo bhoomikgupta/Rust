@@ -21,3 +21,4 @@ jobs:
       working-directory: ./hello
     - name: Run tests
       run: cargo test --verbose
+      working-directory: ./hello
