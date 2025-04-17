@@ -16,9 +16,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build
-      run: cargo build --verbose
-      working-directory: ./*
-    - name: Run tests
-      run: cargo test --verbose
-      working-directory: ./*
+    - name: Find and Build All Projects
+      run: |
+        for dir in $(find . -name Cargo.toml -exec dirname {} \;); do
+          echo "Building in $dir"
+          (cd $dir && cargo build --verbose)
+        done
+    - name: Find and Test All Projects
+      run: |
+        for dir in $(find . -name Cargo.toml -exec dirname {} \;); do
+          echo "Testing in $dir"
+          (cd $dir && cargo test --verbose)
+        done
