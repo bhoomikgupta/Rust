@@ -1,3 +1,24 @@
+fn bhoomik() {
+    println!("Hello Bhoomik!");
+}
+fn print_bhoomik(phrase: &str) {
+    println!("{}", phrase);
+}
+fn gcd(a: i32, b: i32) -> i32 {
+    if b == 0 {
+        a
+    } else {
+        gcd(b, a % b)//leaving semicolon meaning return value
+    }
+}
+
+fn multiple_return_values(flag:bool) -> bool {
+    if flag {
+        return true;
+    } else {
+        return false;
+    }
+}
 fn main() {
     println!("Hello, world!");
     let mut x = 6;
@@ -84,4 +105,43 @@ fn main() {
     print!("{}\n",str1);
     //compare strings
     println!("{:?}\n",str1 == str2);
+    
+    //functions
+    bhoomik();
+    print_bhoomik("Hello Bhoomik!");
+    println!("{}", gcd(20, 5));  
+    println!("{}", multiple_return_values(true));
+
+    //control flow
+    // loop{
+    //     println!("Hello Bhoomik!");
+    // } infinite loop
+    let mut num = 0;
+    'counter:loop{
+        println!("Counter: {}",num);
+        let mut decrease = 5;
+        loop{
+            println!("Decreasing: {}",decrease);
+            decrease -= 1;
+            if decrease == 0{
+                break;
+            }
+            if num == 2{
+                break 'counter;
+            }
+        }
+        num += 1;
+    }
+    let mut num =0;
+    while num < 5{
+        println!("Counter: {}",num);
+        num += 1;
+    }
+    let vec: Vec<i32> = (0..10).collect();
+    for i in &vec{
+        println!("Counter: {}",i);
+    }
+    for number in (1..4).rev(){
+        println!("Counter: {}",number);
+    }
 }
