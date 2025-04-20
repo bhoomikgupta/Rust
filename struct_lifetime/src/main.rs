@@ -10,6 +10,11 @@ struct Square {
     width: u32,
     height: u32,
 }
+
+struct MyString<'a>{
+    text: &'a str,
+}//lifetime annotation
+
 impl Square {
     fn area(&self) -> u32 {
         self.width * self.height
@@ -38,6 +43,8 @@ fn main() {
         username: user1.username,
         sign_in_count: user1.sign_in_count,
     };
+    let str1 = String::from("hello");
+    let _x = MyString{text: str1.as_str()};
     // println!("User 1: {} {} {}", user1.active, user1.username, user1.sign_in_count); value borrowed here after move
     println!("User 2: {} {} {}", user2.active, user2.username, user2.sign_in_count);
     println!("Hello, world!");
@@ -53,6 +60,7 @@ fn main() {
     println!("Height of square: {}", sq.whats_my_height());
     sq.change_width(30);
     println!("New Width of square: {}", sq.whats_my_width());
+    let s: &'static str = "I have a static lifetime";
 }
 
 fn build_user(username: String) -> User {
