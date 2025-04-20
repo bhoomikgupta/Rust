@@ -24,6 +24,19 @@ fn main() {
     let s = String::from("hello");
     takes_ownership(s); // give ownership of s to the function
     // println!("{}", s); // This will cause a compile-time error
+    let val1 =1;
+    make_copy(val1); // copy val1 to the function
+    println!("{}", val1); // This will work
+    let str1:String = give_ownership();
+    println!("{}", str1); // This will work
+    let str3:String = take_and_give_ownership(str1);
+    println!("{}", str3); // This will work
+    let str4 = String::from("Bhoomik");
+    let mut str5:String;
+    // loop{
+    //     //str5=str4; //value moved here, in previous iteration of loop
+    //     str5 = str4.clone(); //value copied here, in previous iteration of loop
+    // }
 }
 // s is dropped here
 //var is dropped after main
@@ -37,3 +50,10 @@ fn make_copy(x: i32) {
     let val1 = x;
     println!("{}", val1);
 }
+
+fn give_ownership() -> String {
+    "given".to_string()
+}
+fn take_and_give_ownership(s: String) -> String {
+    s
+ }
