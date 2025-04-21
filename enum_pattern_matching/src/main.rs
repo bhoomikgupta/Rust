@@ -58,8 +58,32 @@ fn main() {
     what_pet("dog");
     what_pet("cat");
     what_pet("fish");
-    what_pet("bird"); // This will panic at runtime
-
+    // what_pet("bird"); // This will panic at runtime
+    let dog2 = Some(Pet::Dog);
+    if let Some(pet) = dog2 {
+        println!("Dog sound: {}", pet.sound());
+    } else {
+        println!("No pet found");
+    }
+    let mut stack = Vec::new();
+    stack.push(1); 
+    stack.push(2);
+    stack.push(3);
+    while let Some(top) = stack.pop() {
+        println!("Popped: {}", top);
+    }
+    let x= 10;
+    match x {
+        1|2 => println!("One or two"),
+        3..=5 => println!("Three to five"),
+        _=> println!("Something else"),
+    }
+    let y = Some(15);
+    match y {
+        Some(10) => println!("Ten"),
+        Some(15) => println!("Fifteen"),
+        _ => println!("Something else"),
+    }
 }
 fn plus_one(x: Option<i32>) -> Option<i32> {
     match x {
