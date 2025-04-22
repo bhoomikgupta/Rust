@@ -41,7 +41,6 @@ impl Overview for AnotherCourse {
         format!("{}: {}", self.headline, self.description)
     }
 }
-use std::Ops::Add;
 struct Point2D<T> {
     x: T,
     y: T,
