@@ -8,6 +8,18 @@ trait Overview {
     }
 }
 
+impl Drop for Course{
+    fn drop(&mut self) {
+        println!("Dropping Course: {}", self.headline);
+    }
+}
+
+trait Clone: Sized{
+    fn clone(&self) -> Self;
+    fn clone_from(&mut self, source: &Self) {
+        *self = source.clone();
+    }
+}
 struct Course {
     headline: String,
     description: String,
@@ -28,6 +40,11 @@ impl Overview for AnotherCourse {
     fn overview(&self) -> String {
         format!("{}: {}", self.headline, self.description)
     }
+}
+use std::Ops::Add;
+struct Point2D<T> {
+    x: T,
+    y: T,
 }
 fn main() {
     let coordinates = Point { x: 5, y: 10 };
@@ -54,4 +71,19 @@ fn main() {
     println!("Coordinates Float: x = {}, y = {}", coordinates_float.x, coordinates_float.y);
     println!("Coordinates String: x = {}, y = {}", coordinates_string.x, coordinates_string.y);
     println!("Coordinates Mixed: x = {}, y = {}", coordinates_mixed.x, coordinates_mixed.y);
+    call_overview(&course1);
 }
+// This function takes a reference to an item that implements the Overview trait
+fn call_overview<T:Overview>(item: &T) {
+    println!("{}", item.overview());
+}
+// fn call_overview(item:&impl Overview) {
+//     println!("{}", item.overview());
+// }
+
+// fn call_overview<T:Overview>(item1: &T, item2: &T)
+// fn overview(item1: &impl Overview, item2: &impl Overview) {
+//     println!("{} {}", item1.overview(), item2.overview());
+//}
+//fn overview(item1: &impl Overview + AnotherTraits)
+//fn overview<T: Overview + AnotherTraits>(item1: &T, item2: &T) {
