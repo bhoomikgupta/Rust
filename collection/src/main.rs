@@ -2,6 +2,7 @@ use rand::seq::SliceRandom;
 use rand::thread_rng;
 use std::collections::BinaryHeap;
 use std::collections::HashMap;
+use std::collections::HashSet;
 fn main() {
     let mut num: Vec<i32> = vec![1, 2, 3, 4, 5];
     num.push(6);
@@ -93,4 +94,34 @@ fn main() {
     println!("Map: {:?}", map);
     map.clear();
     println!("Map: {}", map.is_empty());
+    let mut set = HashSet::new();
+    set.insert(1);
+    set.insert(2);
+    set.insert(3);
+    println!("Set: {:?}", set);
+    println!("Set contains 1: {}", set.contains(&1));
+    println!("Set contains 4: {}", set.contains(&4));
+    for x in set.iter() {
+        println!("Set value: {}", x);
+    }
+    set.remove(&1);
+    println!("Set: {:?}", set);
+    set.clear();
+    println!("Set: {}", set.is_empty());
+    let mut set2 = HashSet::new();
+    set2.insert(1);
+    set2.insert(2);
+    set2.insert(3);
+    set2.insert(4);
+    for x in set.intersection(&set2) {
+        println!("Intersection: {}", x);
+    }
+    let intersection = &set2 & &set2;
+    println!("Intersection: {:?}", intersection);
+    let union = &set2 | &set2;
+    println!("Union: {:?}", union);
+    let difference = &set2 - &set2;
+    println!("Difference: {:?}", difference);
+    let symmetric_difference = &set2 ^ &set2;
+    println!("Symmetric difference: {:?}", symmetric_difference);
 }
