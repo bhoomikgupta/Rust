@@ -1,6 +1,7 @@
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 use std::collections::BinaryHeap;
+use std::collections::HashMap;
 fn main() {
     let mut num: Vec<i32> = vec![1, 2, 3, 4, 5];
     num.push(6);
@@ -71,4 +72,25 @@ fn main() {
     bheap.pop();
     println!("Binary heap after pop: {:?}", bheap);
     println!("Binary heap after pop: {:?}", bheap.peek());//peak is going to return option<T> , return none if empty
+    let mut map = HashMap::new();
+    map.insert("one", 1);
+    map.insert("two", 2);
+    map.insert("three", 3);
+    let old = map.insert("one", 10);//key is going to be replaced and old value is returned
+    println!("Old value: {:?}", old);
+    println!("{}", map.contains_key("one"));//true
+    println!("{}", map.contains_key("four"));//false
+    println!("Value: {:?}", map.get("one"));//10
+    println!("Value: {:?}", map.get("four"));//None
+    println!("Keys: {:?}", map.keys());
+    println!("Values: {:?}", map.values());
+    println!("Entries: {:?}", map.iter());
+    let one = map.remove("one");
+    println!("Removed value: {:?}", one);
+    println!("Map: {:?}", map);
+    let remove = map.remove_entry("two");
+    println!("Removed entry: {:?}", remove);
+    println!("Map: {:?}", map);
+    map.clear();
+    println!("Map: {}", map.is_empty());
 }
