@@ -48,11 +48,11 @@ fn main() {
     let copy = add_y;
     print!("{}",add_y(copy(1))); // Output: 6
 
-    let mut y = 5;
-    let mut add_y = |x| {
-        y += x;
-        y
-    };
-    let copy = add_y;
+    // let mut y = 5;
+    // let mut add_y = |x| {
+    //     y += x;
+    //     y
+    // };
+    // let copy = add_y;
     // print!("{}",add_y(copy(1))); // Output: 7 error
 }
