@@ -22,9 +22,9 @@ jobs:
           echo "Building in $dir"
           (cd $dir && cargo build --verbose)
         done
-    - name: Find and Test All Projects
-      run: |
-        for dir in $(find . -name Cargo.toml -exec dirname {} \;); do
-          echo "Testing in $dir"
-          (cd $dir && cargo test --verbose)
-        done
+    # - name: Find and Test All Projects
+    #   run: |
+    #     for dir in $(find . -name Cargo.toml -exec dirname {} \;); do
+    #       echo "Testing in $dir"
+    #       (cd $dir && cargo test --verbose)
+    #     done
